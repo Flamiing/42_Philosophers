@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/31 13:20:45 by alaaouam          #+#    #+#              #
-#    Updated: 2023/04/17 23:42:55 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/04/20 21:36:20 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ OBJS = $(addprefix $(OBJ_PATH), $(OBJ))
 INCLUDE = inc/
 
 CC = gcc
-CFLAGS =  -Wall -Wextra -I $(INCLUDE) -arch x86_64
+CFLAGS =  -Wall -Wextra  -Werror -I $(INCLUDE)
 RM = rm -rf
 
 #	RULES	#
