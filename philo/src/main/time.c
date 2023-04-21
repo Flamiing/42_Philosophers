@@ -32,5 +32,5 @@ void	ft_usleep(long long ms)
 
 	reference = ms +  ft_gettime();
 	while (ft_gettime() < reference)
-		usleep(10);
+		usleep(700);
 }

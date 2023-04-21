@@ -71,7 +71,7 @@ typedef struct s_data
 int		ft_how_to_use(void); 
 int		ft_print_error(char	*error);
 int		ft_create_threads(t_philo *list, long long size);
-int		ft_print_action(t_philo *philo, long long tm, char *does);
+int		ft_print_action(t_philo *philo, char *does);
 
 long long	ft_gettime(void);
 long long	ft_time(t_philo *philo);

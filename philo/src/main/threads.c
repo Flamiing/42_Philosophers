@@ -18,13 +18,13 @@ static void	ft_check_death(t_data *data, t_philo *philo)
 {
 	long long	count;
 
-	count = 0;
 	if (data->philo_count == 1)
 	{
 		usleep(data->time_die * 1000);
-		ft_print_action(philo, ft_time(philo), DEAD);
+		ft_print_action(philo, DEAD);
 		return ;
 	}
+	count = 0;
 	while (1)
 	{
 		if (philo[count].meal_count == data->max_meals)
@@ -51,18 +51,12 @@ int	ft_create_threads(t_philo *list, long long size)
 	count = 0;
 	while (count < size)
 	{
-		if (pthread_create(&list[count].thread_id, NULL, ft_tasks, (void *)&list[count]) != 0)
+		if (pthread_create(&list[count].thread_id, NULL, ft_tasks,
+				(void *)&list[count]) != 0)
 			return (1);
 		usleep(100);
 		count++;
 	}
 	ft_check_death(list->data, list);
-	/* count = 0;
-	while (count < size)
-	{
-		if (pthread_join(list[count].thread_id, NULL) != 0)
-			return (1);
-		count++;
-	} */
 	return (0);
 }

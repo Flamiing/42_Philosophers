@@ -14,10 +14,10 @@
 #include <stdio.h>
 #include <sys/time.h>
 
-int	ft_print_action(t_philo *philo, long long tm, char *does)
+int	ft_print_action(t_philo *philo, char *does)
 {
 	pthread_mutex_lock(&philo->data->printing);
-	printf("%lld %lld %s", tm, philo->id, does);
+	printf("%lld %lld %s", ft_time(philo), philo->id, does);
 	pthread_mutex_unlock(&philo->data->printing);
 	return (0);
 }
