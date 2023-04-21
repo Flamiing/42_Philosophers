@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 18:09:10 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/04/21 18:10:19 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/04/21 18:35:26 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <sys/time.h>
+
+/* |~~~ DATA STRUCT PROTOTYPE ~~~| */
+typedef struct s_data	t_data;
 
 /* |~~~ BOOLEANS ~~~| */
 # define TRUE 1
@@ -37,7 +40,6 @@
 # define THINK "is thinking\n"
 # define DEAD "died\n"
 
-typedef struct s_data	t_data;
 /* |~~~ PHILOSOPHER STRUCT ~~~| */
 typedef struct s_philo
 {
@@ -48,35 +50,30 @@ typedef struct s_philo
 	long long	start;
 	long long	last_meal;
 	pthread_t	thread_id;
-	struct s_data	*data;
+	t_data		*data;
 }	t_philo;
 
 /* |~~~ DATA STRUCT ~~~| */
 typedef struct s_data
 {
-	long long	philo_count;
-	long long	max_meals;
-	long long	have_to_eat;
-	long long	time_die;
-	long long	time_eat;
-	long long	time_sleep;
-	int		philo_dead;
-	pthread_mutex_t	*forks;
-	pthread_mutex_t	printing;
-	pthread_mutex_t	death;
-	t_philo		*list;
+	long long			philo_count;
+	long long			philo_dead;
+	long long			max_meals;
+	long long			have_to_eat;
+	long long			time_die;
+	long long			time_eat;
+	long long			time_sleep;
+	t_philo				*list;
+	pthread_mutex_t		*forks;
+	pthread_mutex_t		printing;
+	pthread_mutex_t		death;
 }	t_data;
 
 /* |~~~ PROTOTYPES ~~~| */
-int	ft_how_to_use(void);
-int	ft_print_error(char	*error);
-int	ft_create_threads(t_philo *list, long long size);
-int	ft_print_action(t_philo *philo, char *does);
-
-long long	ft_gettime(void);
-long long	ft_time(t_philo *philo);
-long long	ft_strlen(const char *s);
-long long	ft_atoll(const char *string);
+int			ft_how_to_use(void);
+int			ft_print_error(char	*error);
+int			ft_create_threads(t_philo *list, long long size);
+int			ft_print_action(t_philo *philo, char *does);
 
 void		ft_free_data(t_data *data);
 
@@ -89,5 +86,10 @@ t_philo		*ft_create_list(t_data *data, long long size);
 
 t_data		*ft_parser(char **args);
 t_data		*ft_init_data(char **args);
+
+long long	ft_gettime(void);
+long long	ft_time(t_philo *philo);
+long long	ft_strlen(const char *s);
+long long	ft_atoll(const char *string);
 
 #endif
