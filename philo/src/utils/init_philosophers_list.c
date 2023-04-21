@@ -12,21 +12,14 @@
 
 #include <philosophers.h>
 #include <pthread.h>
-#include <stdbool.h>
 
-static t_philo	ft_newnode(t_data *data, long long id, char *max_meals)
+static t_philo	ft_newnode(t_data *data, long long id)
 {
 	t_philo	node;
 
-	node.time = 0;
 	node.id = id;
 	node.thread_id = NULL;
-	node.death_check = NULL;
-	if (max_meals)
-		node.max_meals = ft_atoll(max_meals);
-	else
-		node.max_meals = -1;
-	node.is_alive = true;
+	node.meal_count = 0;
 	if (id == data->philo_count)
 	{
 		node.right_fork = 0;
@@ -41,7 +34,7 @@ static t_philo	ft_newnode(t_data *data, long long id, char *max_meals)
 	return (node);
 }
 
-t_philo	*ft_create_list(t_data *data, long long size, char *optional_arg)
+t_philo	*ft_create_list(t_data *data, long long size)
 {
 	long long		count;
 
@@ -51,7 +44,7 @@ t_philo	*ft_create_list(t_data *data, long long size, char *optional_arg)
 		return (NULL);
 	while (count < size)
 	{
-		data->list[count] = ft_newnode(data, count + 1, optional_arg);
+		data->list[count] = ft_newnode(data, count + 1);
 		count++;
 	}
 	return (data->list);

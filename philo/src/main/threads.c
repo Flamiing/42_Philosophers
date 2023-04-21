@@ -12,8 +12,37 @@
 
 #include <philosophers.h>
 #include <pthread.h>
-#include <stdbool.h>
 #include <sys/time.h>
+
+static void	ft_check_death(t_data *data, t_philo *philo)
+{
+	long long	count;
+
+	count = 0;
+	if (data->philo_count == 1)
+	{
+		usleep(data->time_die * 1000);
+		ft_print_action(philo, ft_time(philo), DEAD);
+		return ;
+	}
+	while (1)
+	{
+		if (philo[count].meal_count == data->max_meals)
+		{
+			data->have_to_eat--;
+			if (data->have_to_eat <= 0)
+				return ;
+		}
+		if (ft_gettime() - philo[count].last_meal > data->time_die)
+		{
+			pthread_mutex_lock(&data->printing);
+			printf("%lld %lld %s", ft_time(philo + count), philo[count].id, DEAD);
+			return ;
+		}
+		count = (count + 1) % data->philo_count;
+		usleep(500);
+	}
+}
 
 int	ft_create_threads(t_philo *list, long long size)
 {
@@ -24,14 +53,16 @@ int	ft_create_threads(t_philo *list, long long size)
 	{
 		if (pthread_create(&list[count].thread_id, NULL, ft_tasks, (void *)&list[count]) != 0)
 			return (1);
+		usleep(100);
 		count++;
 	}
-	count = 0;
+	ft_check_death(list->data, list);
+	/* count = 0;
 	while (count < size)
 	{
 		if (pthread_join(list[count].thread_id, NULL) != 0)
 			return (1);
 		count++;
-	}
+	} */
 	return (0);
 }

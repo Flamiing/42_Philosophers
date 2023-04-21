@@ -12,7 +12,6 @@
 
 #include <philosophers.h>
 #include <pthread.h>
-#include <stdbool.h>
 
 void	ft_free_data(t_data *data)
 {
@@ -31,7 +30,6 @@ void	ft_free_data(t_data *data)
 	free(data->forks);
 	pthread_mutex_destroy(&data->printing);
 	pthread_mutex_destroy(&data->death);
-	pthread_mutex_destroy(&data->lock);
 	free(data);
 }
 

@@ -12,15 +12,12 @@
 
 #include <philosophers.h>
 #include <pthread.h>
-#include <stdbool.h>
 
 static int	ft_init_mutex(t_data *data)
 {
 	if (pthread_mutex_init(&data->printing, NULL) != 0)
 		return (1);
 	if (pthread_mutex_init(&data->death, NULL) != 0)
-		return (1);
-	if (pthread_mutex_init(&data->lock, NULL) != 0)
 		return (1);
 	return (0);
 }
@@ -55,12 +52,17 @@ t_data	*ft_init_data(char **args)
 	data->time_die = ft_atoll(args[2]);
 	data->time_eat = ft_atoll(args[3]);
 	data->time_sleep = ft_atoll(args[4]);
-	data->philo_dead = false;
+	if (args[5])
+		data->max_meals = ft_atoll(args[5]);
+	else
+		data->max_meals = -1;
+	data->have_to_eat = data->max_meals;
+	data->philo_dead = FALSE;
 	if (ft_init_fork_mutex(data, data->philo_count) != 0)
 		return (ft_free_and_return(data));
 	if (ft_init_mutex(data) != 0)
 		return (ft_free_and_return(data));
-	data->list = ft_create_list(data, data->philo_count, args[5]);
+	data->list = ft_create_list(data, data->philo_count);
 	if (!data->list)
 		return (ft_free_and_return(data));
 	return (data);

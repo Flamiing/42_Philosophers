@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <philosophers.h>
-#include <stdbool.h>
 
 static int	ft_is_numeric(char **args)
 {

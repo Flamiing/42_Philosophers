@@ -19,41 +19,10 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <sys/time.h>
-# include <stdbool.h>
 
-typedef struct s_data	t_data;
-
-/* |~~~ PHILOSOPHER STRUCT ~~~| */
-typedef struct s_philo
-{
-	int	max_meals;
-	long long	time;
-	long long	id;
-	long long	right_fork;
-	long long	left_fork;
-	pthread_t	thread_id;
-	pthread_t	death_check;
-	struct timeval	start;
-	struct timeval	last_meal;
-	bool	is_alive;
-	struct s_data	*data;
-}	t_philo;
-
-/* |~~~ DATA STRUCT ~~~| */
-typedef struct s_data
-{
-	long long	philo_count;
-	long long	time_die;
-	long long	time_eat;
-	long long	time_sleep;
-	bool	philo_dead;
-	pthread_mutex_t	*forks;
-	pthread_mutex_t	printing;
-	pthread_mutex_t	death;
-	pthread_mutex_t	lock;
-	t_philo		*list;
-}	t_data;
-
+/* |~~~ BOOLEANS ~~~| */
+# define TRUE 1
+# define FALSE 1
 /* |~~~ ERROR CODES ~~~| */
 # define WRONG_NUMBER_ARGS 666
 # define THREADS_FAILED 1
@@ -68,19 +37,46 @@ typedef struct s_data
 # define THINK "is thinking\n"
 # define DEAD "died\n"
 
+typedef struct s_data	t_data;
+/* |~~~ PHILOSOPHER STRUCT ~~~| */
+typedef struct s_philo
+{
+	long long	id;
+	long long	meal_count;
+	long long	right_fork;
+	long long	left_fork;
+	long long	start;
+	long long	last_meal;
+	pthread_t	thread_id;
+	struct s_data	*data;
+}	t_philo;
+
+/* |~~~ DATA STRUCT ~~~| */
+typedef struct s_data
+{
+	long long	philo_count;
+	long long	max_meals;
+	long long	have_to_eat;
+	long long	time_die;
+	long long	time_eat;
+	long long	time_sleep;
+	int	philo_dead;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	printing;
+	pthread_mutex_t	death;
+	t_philo		*list;
+}	t_data;
+
 /* |~~~ PROTOTYPES ~~~| */
 int		ft_how_to_use(void); 
 int		ft_print_error(char	*error);
-int		ft_not_dead(t_philo *philo);
 int		ft_create_threads(t_philo *list, long long size);
-int		ft_print_action(t_philo *philo, long long tm, long long id, char *does);
+int		ft_print_action(t_philo *philo, long long tm, char *does);
 
+long long	ft_gettime(void);
+long long	ft_time(t_philo *philo);
 long long	ft_strlen(const char *s);
 long long	ft_atoll(const char *string);
-long long	ft_get_time(struct timeval start);
-long long	ft_time_to_ms(struct timeval time);
-long long	ft_usleep(long long ms);
-long long	ft_time_elapsed(struct timeval start, struct timeval end);
 
 void	ft_free_data(t_data *data);
 
@@ -88,7 +84,7 @@ void	*ft_tasks(void *arg);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_free_and_return(t_data *data);
 
-t_philo		*ft_create_list(t_data *data, long long size, char *optional_arg);
+t_philo		*ft_create_list(t_data *data, long long size);
 
 t_data		*ft_parser(char **args);
 t_data		*ft_init_data(char **args);

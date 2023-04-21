@@ -11,19 +11,13 @@
 /* ************************************************************************** */
 
 #include <philosophers.h>
-#include <stdbool.h>
 #include <stdio.h>
 #include <sys/time.h>
 
-int	ft_print_action(t_philo *philo, long long tm, long long id, char *does)
+int	ft_print_action(t_philo *philo, long long tm, char *does)
 {
 	pthread_mutex_lock(&philo->data->printing);
-	if (philo->data->philo_dead == true)
-	{
-		pthread_mutex_unlock(&philo->data->printing);
-		return (1);
-	}
-	printf("%lld %lld %s", tm, id, does);
+	printf("%lld %lld %s", tm, philo->id, does);
 	pthread_mutex_unlock(&philo->data->printing);
 	return (0);
 }
