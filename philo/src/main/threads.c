@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:06:15 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/04/21 18:39:33 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/04/21 19:13:39 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ static void	ft_check_death(t_data *data, t_philo *philo)
 	count = 0;
 	while (1)
 	{
-		if (philo[count].meal_count == data->max_meals)
+		if (data->ate == data->philo_count)
 		{
-			data->have_to_eat--;
-			if (data->have_to_eat <= 0)
-				return ;
+			pthread_mutex_lock(&data->printing);
+			return ;
 		}
 		if (ft_gettime() - philo[count].last_meal > data->time_die)
 		{
@@ -44,12 +43,6 @@ int	ft_create_threads(t_philo *list, long long size)
 	long long	count;
 
 	count = 0;
-	if (list->data->philo_count == 1)
-	{
-		usleep(list->data->time_die * 1000);
-		ft_print_action(list, DEAD);
-		return (0);
-	}
 	while (count < size)
 	{
 		if (pthread_create(&list[count].thread_id, NULL, ft_tasks,
@@ -57,6 +50,12 @@ int	ft_create_threads(t_philo *list, long long size)
 			return (1);
 		usleep(100);
 		count++;
+	}
+	if (list->data->philo_count == 1)
+	{
+		usleep(list->data->time_die * 1000);
+		ft_print_action(list, DEAD);
+		return (0);
 	}
 	ft_check_death(list->data, list);
 	return (0);

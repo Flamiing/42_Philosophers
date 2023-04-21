@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 21:26:47 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/04/21 18:16:28 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/04/21 19:02:30 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_data	*ft_init_data(char **args)
 		data->max_meals = ft_atoll(args[5]);
 	else
 		data->max_meals = -1;
-	data->have_to_eat = data->max_meals;
+	data->ate = 0;
 	data->philo_dead = FALSE;
 	if (ft_init_fork_mutex(data, data->philo_count) != 0)
 		return (ft_free_and_return(data));

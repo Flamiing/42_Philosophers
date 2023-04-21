@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 18:09:10 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/04/21 18:35:26 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/04/21 19:02:37 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_data
 	long long			philo_count;
 	long long			philo_dead;
 	long long			max_meals;
-	long long			have_to_eat;
+	long long			ate;
 	long long			time_die;
 	long long			time_eat;
 	long long			time_sleep;
