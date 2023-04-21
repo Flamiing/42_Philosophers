@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 21:54:36 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/04/18 13:44:18 by alaaouam         ###   ########.fr       */
+/*   Created: 2023/04/21 18:09:10 by alaaouam          #+#    #+#             */
+/*   Updated: 2023/04/21 18:10:19 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_data
 	long long	time_die;
 	long long	time_eat;
 	long long	time_sleep;
-	int	philo_dead;
+	int		philo_dead;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	printing;
 	pthread_mutex_t	death;
@@ -68,27 +68,26 @@ typedef struct s_data
 }	t_data;
 
 /* |~~~ PROTOTYPES ~~~| */
-int		ft_how_to_use(void); 
-int		ft_print_error(char	*error);
-int		ft_create_threads(t_philo *list, long long size);
-int		ft_print_action(t_philo *philo, char *does);
+int	ft_how_to_use(void);
+int	ft_print_error(char	*error);
+int	ft_create_threads(t_philo *list, long long size);
+int	ft_print_action(t_philo *philo, char *does);
 
 long long	ft_gettime(void);
 long long	ft_time(t_philo *philo);
 long long	ft_strlen(const char *s);
 long long	ft_atoll(const char *string);
 
-void	ft_free_data(t_data *data);
+void		ft_free_data(t_data *data);
 
-void	*ft_tasks(void *arg);
-void	ft_usleep(long long ms);
-void	*ft_calloc(size_t count, size_t size);
-void	*ft_free_and_return(t_data *data);
+void		*ft_tasks(void *arg);
+void		ft_usleep(long long ms);
+void		*ft_calloc(size_t count, size_t size);
+void		*ft_free_and_return(t_data *data);
 
 t_philo		*ft_create_list(t_data *data, long long size);
 
 t_data		*ft_parser(char **args);
 t_data		*ft_init_data(char **args);
-
 
 #endif

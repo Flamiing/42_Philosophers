@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:15:54 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/04/03 14:06:56 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/04/21 18:18:20 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_is_numeric(char **args)
 {
-	size_t	count;
+	size_t		count;
 	long long	pos;
 	long long	not_number;
 
@@ -25,9 +25,9 @@ static int	ft_is_numeric(char **args)
 		not_number = 0;
 		while (args[count][pos])
 		{
-			if (args[count][pos] < 48 || args[count][pos] > 57 )
+			if (args[count][pos] < 48 || args[count][pos] > 57)
 				not_number++;
-			pos++;	
+			pos++;
 		}
 		if (not_number > 0)
 			return (0);

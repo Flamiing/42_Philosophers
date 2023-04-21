@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 21:26:47 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/04/18 11:32:03 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/04/21 18:16:28 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_init_mutex(t_data *data)
 
 static int	ft_init_fork_mutex(t_data *data, long long size)
 {
-	long long	count;
+	long long		count;
 	pthread_mutex_t	*forks;
 
 	forks = (pthread_mutex_t *)ft_calloc(size, sizeof(pthread_mutex_t));

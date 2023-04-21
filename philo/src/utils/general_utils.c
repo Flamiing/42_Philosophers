@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:01:00 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/04/03 13:20:51 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/04/21 18:16:15 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 long long	ft_atoll(const char *string)
 {
-	long long	count;
+	long long		count;
 	long long		sign;
 	long long		number;
 
