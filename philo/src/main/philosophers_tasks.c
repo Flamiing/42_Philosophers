@@ -31,11 +31,13 @@ void	*ft_tasks(void *arg)
 		philo->meal_count++;
 		ft_print_action(philo, ft_time(philo), EAT);
 		philo->last_meal = ft_gettime();
-		usleep(philo->data->time_eat * 1000);
+		//usleep(philo->data->time_eat * 1000);
+		ft_usleep(philo->data->time_eat);
 		pthread_mutex_unlock(&philo->data->forks[philo->left_fork]);
 		pthread_mutex_unlock(&philo->data->forks[philo->right_fork]);
 		ft_print_action(philo, ft_time(philo), SLEEP);
-		usleep(philo->data->time_sleep * 1000);
+		//usleep(philo->data->time_sleep * 1000);
+		ft_usleep(philo->data->time_sleep);
 		ft_print_action(philo, ft_time(philo), THINK);
 	}
 	return (NULL);

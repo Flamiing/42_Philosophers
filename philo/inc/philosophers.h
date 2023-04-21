@@ -81,6 +81,7 @@ long long	ft_atoll(const char *string);
 void	ft_free_data(t_data *data);
 
 void	*ft_tasks(void *arg);
+void	ft_usleep(long long ms);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_free_and_return(t_data *data);
 
@@ -88,5 +89,6 @@ t_philo		*ft_create_list(t_data *data, long long size);
 
 t_data		*ft_parser(char **args);
 t_data		*ft_init_data(char **args);
+
 
 #endif

@@ -25,3 +25,12 @@ long long	ft_time(t_philo *philo)
 {
 	return (ft_gettime() - philo->start);
 }
+
+void	ft_usleep(long long ms)
+{
+	long long	reference;
+
+	reference = ms +  ft_gettime();
+	while (ft_gettime() < reference)
+		usleep(10);
+}
