@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 18:09:10 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/04/21 19:02:37 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/04/22 21:16:10 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,14 @@ typedef struct s_data
 int			ft_how_to_use(void);
 int			ft_print_error(char	*error);
 int			ft_create_threads(t_philo *list, long long size);
-int			ft_print_action(t_philo *philo, char *does);
 
+void		ft_usleep(long long ms);
 void		ft_free_data(t_data *data);
+void		ft_print_action(t_philo *philo, char *does);
 
 void		*ft_tasks(void *arg);
-void		ft_usleep(long long ms);
 void		*ft_calloc(size_t count, size_t size);
 void		*ft_free_and_return(t_data *data);
-
-t_philo		*ft_create_list(t_data *data, long long size);
 
 t_data		*ft_parser(char **args);
 t_data		*ft_init_data(char **args);

@@ -6,12 +6,19 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:19:01 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/04/21 19:12:26 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/04/22 21:15:30 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philosophers.h>
 #include <pthread.h>
+
+void	ft_print_action(t_philo *philo, char *does)
+{
+	pthread_mutex_lock(&philo->data->printing);
+	printf("%lld %lld %s", ft_time(philo), philo->id, does);
+	pthread_mutex_unlock(&philo->data->printing);
+}
 
 static void	ft_timer(t_philo *philo)
 {

@@ -1,17 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   init_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 21:26:47 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/04/21 19:02:30 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/04/22 21:12:55 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philosophers.h>
 #include <pthread.h>
+
+static t_philo	ft_newnode(t_data *data, long long id)
+{
+	t_philo	node;
+
+	node.id = id;
+	node.thread_id = NULL;
+	node.meal_count = 0;
+	if (id == data->philo_count)
+	{
+		node.right_fork = 0;
+		node.left_fork = id - 1;
+	}
+	else
+	{
+		node.right_fork = id;
+		node.left_fork = id - 1;
+	}
+	node.data = data;
+	return (node);
+}
+
+static t_philo	*ft_create_list(t_data *data, long long size)
+{
+	long long		count;
+
+	count = 0;
+	data->list = (t_philo *)malloc(size * sizeof(t_philo));
+	if (!data->list)
+		return (NULL);
+	while (count < size)
+	{
+		data->list[count] = ft_newnode(data, count + 1);
+		count++;
+	}
+	return (data->list);
+}
 
 static int	ft_init_mutex(t_data *data)
 {

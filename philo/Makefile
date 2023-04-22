@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/31 13:20:45 by alaaouam          #+#    #+#              #
-#    Updated: 2023/04/21 18:36:59 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/04/22 21:14:17 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ COLOR_OFF = \033[0m
 
 NAME = philo
 
-SRC = main.c parser.c threads.c error_utils.c free_utils.c general_utils.c init_data.c init_philosophers_list.c \
-				philosophers_tasks.c time.c print_actions.c
+SRC = main.c parser.c threads.c error_utils.c free_utils.c general_utils.c init_structs.c \
+				philosophers_tasks.c time.c
 
 SRC_PATH = src/*/
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
