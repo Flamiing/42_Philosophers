@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:06:15 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/04/21 19:13:39 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/04/25 20:40:13 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_create_threads(t_philo *list, long long size)
 	}
 	if (list->data->philo_count == 1)
 	{
-		usleep(list->data->time_die * 1000);
+		ft_usleep(list->data->time_die);
 		ft_print_action(list, DEAD);
 		return (0);
 	}
